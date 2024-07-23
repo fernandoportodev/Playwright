@@ -43,3 +43,11 @@ test('Login com senha inválida)', async ({ page }) => {
   await page.getByRole('button', {name: 'login'}).click();
   await page.getByText('Senha inválida.').isVisible();
 });
+
+test('Validação Newsletter Rodapé )', async ({ page }) => {
+  await page.getByRole('heading', { name: 'NEWSLETTER' }).scrollIntoViewIfNeeded();
+  await page.getByPlaceholder('Your Mail').click();
+  await page.getByPlaceholder('Your Mail').fill('teste@gmail.com');
+  await page.getByRole('button', { name: 'Send Mail' }).click();
+  await page.getByLabel('Success').isVisible();
+});
